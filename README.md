@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/sbliven/gpcrdb.svg?branch=master)](https://travis-ci.org/sbliven/gpcrdb)
+
 # GPCRdb
 
 Python library to interface with [GPCRdb](https://gpcrdb.org/). The goal is to
