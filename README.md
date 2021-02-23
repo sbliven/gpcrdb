@@ -17,7 +17,10 @@ Additions to gpcrdb are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md)
 for developer information.
 ## Examples
 
-See sample jupyter notebooks in the `examples` directory
+See sample jupyter notebooks in the `examples` directory. Notebooks are saved in
+the 'percent' format, which is easier to store in git. They should be opened
+with jupyter/jupyterlab using the 'jupytext' extension (should be installed by
+default).
 
 ## Citing
 

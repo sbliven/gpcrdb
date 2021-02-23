@@ -27,3 +27,8 @@ Code conforms to the `black` and PEP8 style guides. Before checking in code, ple
 These are tested by the 'lint' tox environment:
 
     tox -e lint
+
+## Resources
+
+- [Web Services docs](https://docs.gpcrdb.org/web_services.html)
+- [Swagger API docs](https://gpcrdb.org/services/)
