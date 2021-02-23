@@ -21,6 +21,12 @@ for line in open("gpcrdb/__init__.py"):
     if line.startswith("__version__"):
         exec(line.strip())
 
+tests_require = ["pytest >= 2.5.2", "black", "flake8", "tox"]
+
+# README
+with open("README.md", "r") as fh:
+    long_description = fh.read()
+
 setup(
     name="gpcrdb",
     # Versions should comply with PEP440.  For a discussion on single-sourcing
@@ -28,6 +34,8 @@ setup(
     # https://packaging.python.org/en/latest/single_source_version.html
     version=__version__,
     description="Library for interacting with the GPCRdb api",
+    long_description=long_description,
+    long_description_content_type="text/markdown",
     # The project's main homepage.
     url="https://github.com/sbliven/gpcrdb",
     # Author details
@@ -53,6 +61,7 @@ setup(
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
     ],
     # What does your project relate to?
     keywords="bioinformatics gpcrdb protein api search membrane gpcr",
@@ -67,15 +76,14 @@ setup(
         "requests >= 2.0",
         # "biopython >= 1.72"
     ],
-    tests_require=["pytest >= 2.5.2"],
+    tests_require=tests_require,
     # List additional groups of dependencies here (e.g. development
     # dependencies). You can install these using the following syntax,
     # for example:
     # $ pip install -e .[dev,test]
-    # extras_require={
-    #     'dev': ['check-manifest'],
-    #     'test': ['coverage'],
-    # },
+    extras_require={
+        "test": tests_require,
+    },
     # If there are data files included in your packages that need to be
     # installed, specify them here.  If using Python 2.6 or less, then these
     # have to be included in MANIFEST.in as well.

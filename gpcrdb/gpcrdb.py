@@ -12,14 +12,15 @@ class GPCRdb(object):
 
     @classmethod
     def fetch_generic_numbers(cls, uniprotid):
-        """Fetch JSON object with generic numbers for the specified uniprot ID (e.g. "opsd_bovin")
-        """
+        """Fetch JSON object with generic numbers for the specified uniprot ID
+        (e.g. "opsd_bovin")"""
         url = f"{cls.BASE_URL}/residues/{uniprotid.lower()}"
         return cls.get(url)
 
     @classmethod
     def fetch_structures(cls, uniprotid, representative=False):
-        """Fetch JSON object with PDB structures for the specified uniprot ID (e.g. "opsd_bovin")
+        """Fetch JSON object with PDB structures for the specified uniprot ID
+        (e.g. "opsd_bovin")
 
         representative: restrict to one structure per activation state
         """
@@ -27,7 +28,6 @@ class GPCRdb(object):
         if representative:
             url += "representative/"
         return cls.get(url)
-
 
     @classmethod
     def get(cls, url):
@@ -37,4 +37,3 @@ class GPCRdb(object):
         entries = json.loads(req.content)
 
         return entries
-
