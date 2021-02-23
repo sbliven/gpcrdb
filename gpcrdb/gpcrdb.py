@@ -30,6 +30,12 @@ class GPCRdb(object):
         return cls.get(url)
 
     @classmethod
+    def fetch_protein(cls, uniprotid):
+        """Get general information about a protein."""
+        url = f"{cls.BASE_URL}/protein/{uniprotid.lower()}/"
+        return cls.get(url)
+
+    @classmethod
     def get(cls, url):
         # Retrive all entries and parse into JSON object
         req = requests.get(url)

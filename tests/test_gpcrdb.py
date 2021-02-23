@@ -19,3 +19,14 @@ def test_fetch_generic_numbers():
 
     assert res33["protein_segment"] == "TM1"
     assert res33["display_generic_number"] == "1.28x28"
+
+def test_fetch_protein():
+    entry = "opsd_bovin"
+    prot = GPCRdb.fetch_protein(entry)
+
+    assert prot['entry_name'] == entry
+    assert prot['name'] == 'Rhodopsin'
+    assert prot['accession'] == 'P02699'
+    assert prot['family'] == '001_009_001_001'
+    assert len(prot['sequence']) > 0
+    assert prot['genes'] == ['RHO']
