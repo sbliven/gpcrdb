@@ -23,6 +23,7 @@ for line in open("gpcrdb/__init__.py"):
 
 tests_require = ["pytest >= 2.5.2", "black", "flake8", "tox"]
 
+biopython_require = ["biopython >= 1.77", "numpy"]
 # README
 with open("README.md", "r") as fh:
     long_description = fh.read()
@@ -83,6 +84,7 @@ setup(
     # $ pip install -e .[dev,test]
     extras_require={
         "test": tests_require,
+        "biopython": biopython_require,
     },
     # If there are data files included in your packages that need to be
     # installed, specify them here.  If using Python 2.6 or less, then these

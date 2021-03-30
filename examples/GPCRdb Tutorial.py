@@ -14,42 +14,59 @@
 # ---
 
 # %% [markdown]
-# # GPCRdb basics
+# # gpcrdb basics
 
 # %%
-from gpcrdb import GPCRdb
+import gpcrdb
+
+# %%
+# BioPython & mmtf-python are optional
+from Bio.PDB.mmtf import MMTFParser, MMTFIO
+import gpcrdb.structure as gstruc
 
 # %% [markdown]
 # ## Single-protein information
 
 # %%
-GPCRdb.fetch_protein("opsd_bovin")
+gpcrdb.fetch_protein("opsd_bovin")
 
 # %% [markdown]
 # ## Generic numbers
+#
+# Fetching gpcrdb entries directly:
 
 # %%
-GPCRdb.fetch_generic_numbers("opsd_bovin")[:10]
+gpcrdb.fetch_generic_numbers("opsd_bovin")[200:210]
 
 # %% [markdown]
-# ## Get all structures in GPCRdb
+# Assigning numbers to your own structures:
+
+# %%
+structure = MMTFParser.get_structure_from_url("7DHI")
+
+
+# %%
+gstruc.assign_generic_numbers(structure, "R")
+
+# %% [markdown]
+# ## Get all structures in gpcrdb
 #
 # Eventually this will have a nice python wrapper too. For now it has to be done with the get method
 
 # %%
 # All families
-GPCRdb.get(f"{GPCRdb.BASE_URL}/proteinfamily")[:10]
+gpcrdb.get(f"{gpcrdb.BASE_URL}/proteinfamily")[:3]
 
 # %%
 # Navigate family tree
 slug = "001_001"
-GPCRdb.get(f"{GPCRdb.BASE_URL}/proteinfamily/children/{slug}")[:10]
+gpcrdb.get(f"{gpcrdb.BASE_URL}/proteinfamily/children/{slug}")[:3]
 
 # %%
-GPCRdb.get(f"{GPCRdb.BASE_URL}/proteinfamily/descendants/{slug}")[:10]
+gpcrdb.get(f"{gpcrdb.BASE_URL}/proteinfamily/descendants/{slug}")[:3]
 
 # %%
-GPCRdb.fetch_structures("opsd_bovin", representative=False)[:10]
+[(s['pdb_code'],s['state']) for s in gpcrdb.fetch_structures("opsd_bovin", representative=False)]
 
 # %%
-GPCRdb.get(f"{GPCRdb.BASE_URL}/proteinfamily/proteins/{slug}")[:10]
+gpcrdb.get(f"{gpcrdb.BASE_URL}/proteinfamily/proteins/{slug}")[:10]

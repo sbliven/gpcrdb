@@ -1,5 +1,3 @@
 __version__ = "1.0.0-dev"
 
-from .gpcrdb import GPCRdb
-
-__all__ = [GPCRdb]
+from .gpcrdb import *  # noqa: F403, F401

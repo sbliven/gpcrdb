@@ -1,9 +1,10 @@
-from gpcrdb import GPCRdb
 import json
+
+import gpcrdb
 
 
 def test_fetch_generic_numbers():
-    entries = GPCRdb.fetch_generic_numbers("opsd_bovin")
+    entries = gpcrdb.fetch_generic_numbers("opsd_bovin")
     print(json.dumps(entries, indent=2))
 
     assert len(entries) > 0
@@ -23,7 +24,7 @@ def test_fetch_generic_numbers():
 
 def test_fetch_protein():
     entry = "opsd_bovin"
-    prot = GPCRdb.fetch_protein(entry)
+    prot = gpcrdb.fetch_protein(entry)
 
     assert prot["entry_name"] == entry
     assert prot["name"] == "Rhodopsin"
